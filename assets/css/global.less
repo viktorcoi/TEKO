@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
+@import "vars";
+@import "mixing";
+
+:active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
+}
+
+// Helper classes
+.d-flex { display: flex; }
+.items-center { align-items: center; }
+.margin-auto { margin: auto; }
+.pos-relative { position: relative; }
+.pos-absolute { position: absolute; }
+.between { justify-content: space-between; }
+
+img, .none-select { 
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none; 
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-wrap: inherit;
+    font-family: 'Montserrat';
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    margin: 0 auto;
+    background-image: url(../img/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    font-size: @40px;
+    font-weight: 500;
+    margin-bottom: 2.5rem;
+}
+
+h2 {
+    font-size: @32px;
+    font-weight: 400;
+}
+
+p {
+    font-size: @24px;
+    font-weight: 400;
+}
+
+.container {
+    padding: 3.75em 6.25em;
+    top: 0; left: 0; right: 0; bottom: 0;
+} 
+
+.resume, .advertisement, .educational, .entertaining {
+    display: none;
+    &.open {
+        display: block;
+    }
+}
+
+.time {
+    width: 13.38em;
+    height: 3.38em;
+    border-radius: @Border20px;
+    z-index: 1;
+    top: 3.75em; right: 6.25em;
+    &.t-resume {
+        .change-time (@ResumeColorTextDark);
+    }
+    &.t-advertisement {
+        .change-time (@AdvertisementColorText);
+    }
+    &.t-educational {
+        .change-time (@EducationalColorTextLight);
+    }
+    &.t-entertaining {
+        .change-time (@EntertainingColorText);
+    }
+    p {
+        margin-left: 1.9rem;
+        font-weight: 500;
+        font-size: @40px;
+    }
+}
+
+.run-line {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    overflow: hidden;
+    height: 4.375em;
+    &.t-resume {
+        .change-line (@ResumeColorTextDark, @ResumeBG);
+    }
+    &.t-advertisement {
+        .change-line (@AdvertisementColorText, @AdvertisementBG);
+    }
+    &.t-educational {
+        .change-line (@EducationalColorTextLight, @EducationalBG);
+    }
+    &.t-entertaining {
+        .change-line (@EntertainingColorText, @EntertainingBG);
+    }
+    .marquee {
+        height: 100%;
+        white-space: nowrap;
+        animation: marquee 15s linear infinite;
+        p {
+            font-size: @32px;
+            margin: auto 0;
+        }
+    }
+}
+
+@keyframes marquee {
+    0% { 
+        -webkit-transform: translateX(0);
+        -webkit-transform: -webkit-translateX(0);
+        transform: translateX(0);
+
+    }
+    100% { 
+        -webkit-transform: translateX(-50%);
+        -webkit-transform: -webkit-translateX(-50%);
+        transform: translateX(-50%);
+
+    }
+}
+
+// resume 
+
+.resume {
+    padding-bottom: 2.87em;
+    background-color: @ResumeBG;
+    h1 {
+        color: @ResumeColorTextDark;
+    }
+    .info {
+        border-radius: @Border30px;
+        background-color: @ResumeBGinfo;
+        width: 35em;
+        padding: 1.88em 2.5em;
+        flex-direction: column;
+        h2 {
+            margin-bottom: 1.56rem;
+        }
+        img {
+            margin: 0 auto;
+            width: 16.68em;
+            height: 16.68em;
+            margin-bottom: 1.56em;
+        }
+        p {
+            color: @ResumeColorTextLight;
+            margin-bottom: .63rem;
+        }
+    }
+    .two-info {
+        flex-direction: column;
+    }
+}
+
+// advertisement 
+
+.advertisement {
+    padding-bottom: 3.01em;
+    background-color: @AdvertisementBG;
+    .teko {
+        width: 9.13em;
+        height: 2.81em;
+    }
+    h1 {
+        font-size: @32px;
+        color: @AdvertisementColorText;
+        margin: 2.63rem 0 1.88rem 0;
+    }
+    h2 {
+        font-size: @40px;
+        font-weight: 500;
+        color: @AdvertisementColorText;
+    }
+    .teko-photo {
+        width: 100%;
+        margin-bottom: 1.88em;
+    }
+    .info {
+        background-color: @AdvertisementBGinfo;
+        padding: 1.88em 2.19em;
+        border-radius: @Border20px;
+        li, p {
+            color: @AdvertisementColorText;
+            font-size: @24px;
+        }
+        li {
+            list-style: inside disc;
+        }
+        &:first-child {
+            margin-right: 1.88em;
+            li {
+                white-space: nowrap;
+            }
+        }
+    }
+    .contacts {
+        margin-top: 2.2em;
+        img {
+            margin-right: 1.25em;
+        }
+    }
+    .phone img {
+        width: 1.25em;
+        height: 1.63em;
+    }
+    .location img {
+        width: 1.44em;
+        height: 1.94em;
+    }
+    .mail img {
+        width: 2.06em;
+        height: 1.63em;
+    }
+}
+
+// educational 
+
+.educational {
+    padding-bottom: 2.8em;
+    background-color: @EducationalBG;
+    h1 {
+        color: @EducationalColorTextLight;
+    }
+    .info {
+        width: 94%;
+        color: @EducationalColorTextLight;
+        font-size: @32px;
+        p {
+            color: @EducationalColorTextLight;
+            margin-top: .63rem;
+            text-align: end;
+        }
+        &:not(:last-child) {
+            margin-bottom: 1.44rem;
+        }
+    }
+    .girl {
+        img {
+            border-radius: 4.38em 4.38em 0 0;
+            border: 4px solid @EducationalBGinfo;
+            border-bottom: unset;
+            width: 38.625em;
+            height: 43.81em; 
+        }
+        > div {
+            margin-top: -4px;
+            padding: .88em;
+            background-color: @EducationalBGinfo;
+            border-radius: 0 0 4.38em 4.38em;
+        }
+        p {
+            color: @EducationalColorTextDark;
+            text-align: center;
+            font-size: @24px;
+        }
+    }
+}
+
+// educational 
+
+.entertaining {
+    padding-bottom: 2.8em;
+    background-color: @EntertainingBG;
+    h1, h2 {
+        color: @EntertainingColorText;
+        font-weight: 500;
+    }
+    .list-country {
+        flex-wrap: wrap;
+        margin: 0.63em 0 1.25em 0;
+    }
+    .info {
+        li, p {
+            color: @EntertainingColorText;
+            font-size: @32px;
+        }
+        li {
+            margin-top: .61rem;
+            list-style: inside disc;
+        }
+    }
+    .country {
+        margin: 1.25em 1em 0 0;
+        &:nth-child(6) {
+            margin-right: unset;
+        }
+        img {
+            width: 16.875em;
+            height: 10em;
+        }
+        > div {
+            margin: .68em auto 0 auto;
+            padding: 0.38em .94em;
+            border: 3px solid @EntertainingBGinfo;
+            width: max-content;
+            border-radius: .94em;
+        }
+    }
+}
